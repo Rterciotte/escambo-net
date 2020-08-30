@@ -13,9 +13,15 @@ feature 'Employee register account' do
     visit root_path
     click_on 'Registrar-se'
     fill_in 'Email', with: 'lorem@ipsum.com'
-    fill_in 'Password', with: '123456'
-    fill_in 'Password confirmation', with: '123456'
+    fill_in 'Senha', with: '123456'
+    fill_in 'Confirmação de senha', with: '123456'
+    fill_in 'Empresa', with: 'Campus Code'
+    fill_in 'Nome Completo', with: 'Lorem Ipsum'
+    fill_in 'Nome Social', with: 'Lorem'
+    fill_in 'Data de Nascimento', with: '01/01/1970'
+    fill_in 'Cargo', with: 'Salesman'
+    fill_in 'Setor', with: 'Sales'
     click_on 'Sign up'
-    expect(page).to have_content('Escambo Net')
+    expect(page).to have_content('Editar perfil')
   end
 end

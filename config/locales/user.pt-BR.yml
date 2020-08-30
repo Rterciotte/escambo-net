@@ -1,0 +1,19 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      user: Usuário
+    attributes:
+      user:
+        name: Nome
+        email: Email
+        password: Senha
+        password_confirmation: Confirmação de senha
+        company_name: Empresa
+        full_name: Nome Completo
+        social_name: Nome Social
+        birth_date: Data de Nascimento
+        occupation: Cargo
+        department: Setor
+
+        
