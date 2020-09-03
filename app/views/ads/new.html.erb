@@ -1,0 +1,29 @@
+<%= form_with model: @ad, local: true do |f| %>
+    <div class="field">
+      <%= f.label :name, 'Nome' %>
+      <%= f.text_field :name %>  
+    </div>
+    <div class="field">
+      <%= f.label :category, 'Categoria' %>
+      <%= f.text_field :category %>  
+    </div>
+    <div class="field">
+      <%= f.label :description, 'Descrição' %>
+      <%= f.text_field :description %>  
+    </div>
+    <div class="field">
+      <%= f.label :photo, 'Foto' %>
+      <%= f.text_field :photo %>  
+    </div>
+    <div class="field">
+      <%= f.label :price, 'Preço' %>
+      <%= f.number_field :price %>  
+    </div>
+    <div class="field">
+      <%= f.label :quantity, 'Quantidade' %>
+      <%= f.number_field :quantity %>  
+    </div>
+    <div class="action">
+      <%= f.submit 'Anunciar' %>  
+    </div>
+<% end %>

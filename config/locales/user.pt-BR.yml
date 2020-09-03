@@ -9,6 +9,7 @@ pt-BR:
         email: Email
         password: Senha
         password_confirmation: Confirmação de senha
+        current_password: Senha Atual
         company_name: Empresa
         full_name: Nome Completo
         social_name: Nome Social

@@ -1,0 +1,7 @@
+<% if @ads == nil %>
+  <h3>Nenhum anúncio cadastrado</h3>
+<% else %>
+  <% @ads.each do |ad| %>
+    <div><%= link_to ad.name, ad %></div>
+  <% end %>
+<% end %>

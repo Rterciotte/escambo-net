@@ -1,0 +1,13 @@
+---
+pt-BR:
+  activerecord:
+    models:
+      ads: Anúncios
+    attributes:
+      ad:
+        name: Nome
+        category: Categoria
+        description: Descrição
+        photo: Foto
+        price: Preço
+        quantity: Quantidade

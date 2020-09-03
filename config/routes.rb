@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users do
-    resources :user_profiles
+  resources :ads do
+    get 'search', on: :collection
   end
   root to: 'home#index'
 end
