@@ -4,8 +4,6 @@ feature 'Employee publishes an ad' do
         visit root_path
         login_as :user
         click_on 'Criar Anúncio'
-        expect(current_path).to eq new_ad_path
-        expect(page).to have_content('Nome')
         fill_in 'Nome', with: 'Guitarra'
         fill_in 'Categoria', with: 'Instrumento Musical'
         fill_in 'Fotos', with: 'Guitarra.jpg'
