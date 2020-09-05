@@ -11,10 +11,7 @@
     <dt><%= Ad.human_attribute_name :quantity %></dt>
     <dd><%= @ad.quantity %></dd>
 
-    <%= link_to 'Apagar', user_ad_path(@ad), method: :delete,
+    <%= link_to 'Apagar', ad_path(@ad), method: :delete,
     data: { confirm: 'Tem certeza que deseja apagar?' } %>
 
-    <% if @ad.user != current_user %>
-      <%= link_to 'Comprar' %>
-    <% end %>
   </dl>
