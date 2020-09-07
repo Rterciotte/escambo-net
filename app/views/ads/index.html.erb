@@ -1,7 +1,13 @@
-<% if @ads == nil %>
+<% if @ads.empty? %>
   <h3>Nenhum anúncio cadastrado</h3>
 <% else %>
   <% @ads.each do |ad| %>
     <div><%= link_to ad.name, ad %></div>
   <% end %>
+<% end %>
+
+<%= form_with url: search_ads_path, method: :get, local: true do |f| %>
+    <%= f.label :q, 'Busca de anúncios' %>
+    <%= f.text_field :q %>
+    <%= f.submit 'Buscar' %>
 <% end %>
