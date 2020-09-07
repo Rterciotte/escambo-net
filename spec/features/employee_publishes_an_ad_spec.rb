@@ -20,4 +20,25 @@ feature 'Employee publishes an ad' do
         fill_in 'Quantidade', with: '1'
         click_on 'Anunciar'
     end
+
+    scenario 'must fill in all fields' do
+        user  = User.create!(full_name: 'Rogério Terciotte', social_name: 'Rogério', 
+                            birth_date: '01/01/1983', occupation: 'Vendedor', department: 'Vendas', company_name: 'Campus Code',
+                            email: 'rogerio@email.com', password: '12345678')
+        visit root_path
+        click_on 'Login'
+        fill_in 'Email', with: 'rogerio@email.com'
+        fill_in 'Senha', with: '12345678'
+        click_on 'Log in'
+
+        expect(current_path).to eq root_path
+        click_on 'Criar Anúncio'
+        click_on 'Anunciar'
+        expect(page).to have_content("Name can't be blank")
+        expect(page).to have_content("Category can't be blank")
+        expect(page).to have_content("Photo can't be blank")
+        expect(page).to have_content("Description can't be blank")
+        expect(page).to have_content("Price can't be blank")
+        expect(page).to have_content("Quantity can't be blank")
+    end
 end

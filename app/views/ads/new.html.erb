@@ -1,3 +1,7 @@
+<%= @ad.errors.full_messages.each do |message| %>
+    <p><%= message %></p>
+<% end %>
+
 <%= form_with model: @ad, local: true do |f| %>
     <div class="field">
       <%= f.label :name, 'Nome' %>

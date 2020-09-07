@@ -7,7 +7,8 @@ class CreateAds < ActiveRecord::Migration[6.0]
       t.string :photo
       t.integer :price
       t.integer :quantity
-
+      t.integer :status
+      
       t.timestamps
     end
   end

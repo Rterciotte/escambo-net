@@ -8,14 +8,14 @@ class AdsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:id])
+    
     @ad = Ad.new
   end
 
   def create
     @ad = Ad.new(ad_params)
-    if @ad.save!
-      redirect_to action: "index", alert: 'Anúncio criado com sucesso!'
+    if @ad.save
+      redirect_to @ad, alert: 'Anúncio criado com sucesso!'
     else
       render :new
     end 
@@ -35,6 +35,6 @@ class AdsController < ApplicationController
   private 
     
   def ad_params 
-    params.require(:ad).permit(:name, :category, :description, :photo, :price, :quantity, :user_id)
+    params.require(:ad).permit(:name, :category, :description, :photo, :price, :quantity)
   end
 end
