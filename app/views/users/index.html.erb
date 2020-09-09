@@ -1,0 +1,8 @@
+<% if @users.empty? %>
+  <h3>Nenhum perfil encontrado</h3>
+<% else %>
+  <% @users.each do |user| %>
+    <div><%= link_to user.social_name, user %></div>
+  <% end %>
+<% end %>
+

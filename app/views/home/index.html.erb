@@ -2,3 +2,9 @@
 
 <%= link_to 'Criar Anúncio', new_ad_path %>
 <%= link_to 'Anúncios', ads_path %>
+
+<%= form_with url: search_users_path, method: :get, local: true do |f| %>
+    <%= f.label :q, 'Busca de Perfil' %>
+    <%= f.text_field :q %>
+    <%= f.submit 'Buscar Perfil' %>
+<% end %>
