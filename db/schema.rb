@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_202925) do
     t.string "photo"
     t.integer "price"
     t.integer "quantity"
-    t.integer "status"
+    t.integer "status", :default => 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
