@@ -1,5 +1,9 @@
-<%= @ad.errors.full_messages.each do |message| %>
-    <p><%= message %></p>
+<% if @ad.errors.any? %>
+  <ul>
+    <% @ad.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>    
+  </ul>
 <% end %>
 
 <%= form_with model: @ad, local: true do |f| %>

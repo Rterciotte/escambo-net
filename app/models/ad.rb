@@ -1,4 +1,5 @@
 class Ad < ApplicationRecord
+  belongs_to :user
   validates :name, :category, :description, :price, :photo, :quantity, presence: true
   enum status: {
     active: 0,
