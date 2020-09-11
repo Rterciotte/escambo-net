@@ -11,7 +11,17 @@
     <dt><%= Ad.human_attribute_name :quantity %></dt>
     <dd><%= @ad.quantity %></dd>
 
+  <% if current_user == @ad.user %>
     <%= link_to 'Apagar', ad_path(@ad), method: :delete,
     data: { confirm: 'Tem certeza que deseja apagar?' } %>
+  <% end %>
+
+  <% if (current_user != @ad.user) and (@ad.status == 0) %>
+    <% form_for @object, :method => :put do |f| %>
+    <%= f.hidden_field :status, :value => 1 %>
+    <%= f.submit "Comprar" %>
+  <% end %>
+  
+  <% end %>
 
   </dl>

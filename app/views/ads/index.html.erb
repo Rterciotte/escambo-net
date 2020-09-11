@@ -2,7 +2,9 @@
   <h3>Nenhum anúncio cadastrado</h3>
 <% else %>
   <% @ads.each do |ad| %>
-    <div><%= link_to ad.name, ad %></div>
+    <% if current_user.company_name == ad.user.company_name %>
+      <div><%= link_to ad.name, ad %></div>
+    <% end %>
   <% end %>
 <% end %>
 
