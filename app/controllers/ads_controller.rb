@@ -36,9 +36,17 @@ class AdsController < ApplicationController
     @ad.update_attributes(:status => 'on_hold')
   end
 
-  private
-  
+  def sell
+    @ad = Ad.find(params[:id])
+    @ad.update_attributes(:status => 'finished')
+  end
 
+  def cancel
+    @ad = Ad.find(params[:id])
+    @ad.update_attributes(:status => 'active')
+  end
+  
+  private
     
   def ad_params 
     params.require(:ad).permit(:name, :category, :description, :photo, :price, :quantity, :status).merge(user_id: current_user.id)

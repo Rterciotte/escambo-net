@@ -12,12 +12,20 @@
     <dd><%= @ad.quantity %></dd>
 
   <% if current_user == @ad.user %>
-    <%= link_to 'Apagar', ad_path(@ad), method: :delete,
-    data: { confirm: 'Tem certeza que deseja apagar?' } %>
+    <div> <%= link_to 'Apagar', ad_path(@ad), method: :delete,
+    data: { confirm: 'Tem certeza que deseja apagar?' } %> </div>
   <% end %>
 
   <% if (current_user != @ad.user) and (@ad.status == 'active') %>
-    <%= link_to 'Comprar', {:action => :buy, :id => @ad.id}, :method => :put %>
+    <div> <%= link_to 'Comprar', {:action => :buy, :id => @ad.id}, :method => :put %> </div>
+  <% end %>
+
+  <% if (current_user == @ad.user) and (@ad.status == 'on_hold') %>
+    <div> <%= link_to 'Confirmar venda', {:action => :sell, :id => @ad.id}, :method => :put %> </div>
+  <% end %>
+
+  <% if (current_user == @ad.user) and (@ad.status == 'on_hold') %>
+    <div> <%= link_to 'Cancelar venda', {:action => :cancel, :id => @ad.id}, :method => :put %> </div>
   <% end %>
 
   </dl>
