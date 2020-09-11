@@ -29,11 +29,18 @@ class AdsController < ApplicationController
   def search
     @ads = Ad.where('name LIKE UPPER(?)', "%#{params[:q]}%")
     render :index
-  end 
+  end
+  
+  def buy
+    @ad = Ad.find(params[:id])
+    @ad.update_attributes(:status => 'on_hold')
+  end
 
-  private 
+  private
+  
+
     
   def ad_params 
-    params.require(:ad).permit(:name, :category, :description, :photo, :price, :quantity).merge(user_id: current_user.id)
+    params.require(:ad).permit(:name, :category, :description, :photo, :price, :quantity, :status).merge(user_id: current_user.id)
   end
 end

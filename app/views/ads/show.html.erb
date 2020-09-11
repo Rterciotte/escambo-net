@@ -16,12 +16,8 @@
     data: { confirm: 'Tem certeza que deseja apagar?' } %>
   <% end %>
 
-  <% if (current_user != @ad.user) and (@ad.status == 0) %>
-    <% form_for @object, :method => :put do |f| %>
-    <%= f.hidden_field :status, :value => 1 %>
-    <%= f.submit "Comprar" %>
-  <% end %>
-  
+  <% if (current_user != @ad.user) and (@ad.status == 'active') %>
+    <%= link_to 'Comprar', {:action => :buy, :id => @ad.id}, :method => :put %>
   <% end %>
 
   </dl>
