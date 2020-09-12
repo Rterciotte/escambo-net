@@ -1,5 +1,6 @@
 class Ad < ApplicationRecord
   belongs_to :user
+  has_many :chats
 
   validates :name, :category, :description, :price, :photo, :quantity, presence: true
   enum status: {

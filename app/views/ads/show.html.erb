@@ -10,6 +10,7 @@
     <dd><%= @ad.price %></dd>
     <dt><%= Ad.human_attribute_name :quantity %></dt>
     <dd><%= @ad.quantity %></dd>
+  </dl>
 
   <% if current_user == @ad.user %>
     <div> <%= link_to 'Apagar', ad_path(@ad), method: :delete,
@@ -28,4 +29,12 @@
     <div> <%= link_to 'Cancelar venda', {:action => :cancel, :id => @ad.id}, :method => :put %> </div>
   <% end %>
 
-  </dl>
+  <% if current_user == @ad.user %>
+    <div> <%= link_to 'Conversas do anúncio', conversations_path %> </div>
+  <% end %>
+
+  <% if current_user != @ad.user %>
+    <div> <%= link_to 'Enviar mensagem ao vendedor', new_personal_message_path %> </div>
+  <% end %>
+
+

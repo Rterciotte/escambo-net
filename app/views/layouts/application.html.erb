@@ -19,6 +19,11 @@
     <%= link_to "Registrar-se", new_user_registration_path, :class => 'navbar-link'  %> |
     <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
   <% end %>
+  <% flash.each do |key, value| %>
+  <div>
+    <%= value %>
+  </div>
+  <% end %>
     <%= yield %>
   </body>
 </html>
