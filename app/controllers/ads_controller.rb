@@ -5,7 +5,6 @@ class AdsController < ApplicationController
     
   def show
     @ad = Ad.find(params[:id])
-    
   end
 
   def new
@@ -29,7 +28,7 @@ class AdsController < ApplicationController
 
   def search
     @ads = Ad.where('name LIKE UPPER(?)', "%#{params[:q]}%")
-    render :index
+    render :search
   end
   
   def buy

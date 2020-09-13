@@ -29,12 +29,15 @@
     <div> <%= link_to 'Cancelar venda', {:action => :cancel, :id => @ad.id}, :method => :put %> </div>
   <% end %>
 
-  <% if current_user == @ad.user %>
-    <div> <%= link_to 'Conversas do anúncio', conversations_path %> </div>
+  <% if current_user != @ad.user %>
+    <h2>Acesse o perfil do vendedor para enviar mensagens sobre o anúncio:</h2>
+    <div> <%= link_to  "#{@ad.user.social_name}", user_path(@ad.user_id) %> </div>
   <% end %>
 
-  <% if current_user != @ad.user %>
-    <div> <%= link_to 'Enviar mensagem ao vendedor', new_personal_message_path %> </div>
+  <% if current_user == @ad.user %>
+    <%= link_to 'Mensagens de interessados', conversations_path %>
   <% end %>
+
+
 
 

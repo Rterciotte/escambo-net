@@ -8,4 +8,8 @@ class User < ApplicationRecord
   has_many :personal_messages, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  def name
+    email.split('@')[0]
+  end
 end

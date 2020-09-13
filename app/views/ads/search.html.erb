@@ -1,0 +1,12 @@
+<% if @ads.empty? %>
+  <h3>Nenhum anúncio encontrado</h3>
+<% else %>
+<h3>Anúncios encontrados</h3>
+  <% @ads.each do |ad| %>
+    <% if current_user.company_name == ad.user.company_name %>
+      <div><%= link_to ad.name, ad %></div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Voltar', ads_path %>

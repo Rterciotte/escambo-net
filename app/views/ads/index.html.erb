@@ -1,8 +1,9 @@
 <% if @ads.empty? %>
   <h3>Nenhum anúncio cadastrado</h3>
 <% else %>
+<h3>Seus Anúncios</h3>
   <% @ads.each do |ad| %>
-    <% if current_user.company_name == ad.user.company_name %>
+    <% if current_user.id == ad.user.id %>
       <div><%= link_to ad.name, ad %></div>
     <% end %>
   <% end %>

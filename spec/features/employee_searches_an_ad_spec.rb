@@ -2,13 +2,17 @@ require 'rails_helper'
 
 feature 'employee seaches an ad' do
     scenario 'and find exact match' do
-        user  = User.create!(full_name: 'Rogério Terciotte', social_name: 'Rogério', 
-                            birth_date: '01/01/1983', occupation: 'Vendedor', department: 'Vendas', company_name: 'Campus Code',
-                            email: 'rogerio@email.com', password: '12345678')
+        user  = User.create!(full_name: 'Rogério Terciotte', social_name: 'Rogério', birth_date: '01/01/1983', occupation: 'Vendedor', 
+                             department: 'Vendas', company_name: 'Campus Code', email: 'rogerio@email.com', password: '12345678')
+
+        another_user  = User.create!(full_name: 'Fulano Sicrano', social_name: 'Fulano', birth_date: '01/01/1983', occupation: 'Vendedor', 
+                            department: 'Vendas', company_name: 'Campus Code', email: 'fulano@email.com', password: '12345678')
+
         ad = Ad.create!(name: 'Guitarra', category: 'Instrumento Musical', description: 'Guitarra Les Paul bem conservada', 
-                        photo: 'Guitarra.jpg', price: '1000', quantity: '1', status: 0, user: user)
+                        photo: 'Guitarra.jpg', price: '1000', quantity: '1', status: 0, user: another_user)
+
         another_ad = Ad.create!(name: 'Playstation 4', category: 'Consoles', description: 'Playstation 4 em ótimo estado', 
-                        photo: 'ps4.jpg', price: '1000', quantity: '1', status: 0, user: user)                                            
+                                photo: 'ps4.jpg', price: '1000', quantity: '1', status: 0, user: another_user)                                            
         visit root_path
         click_on 'Login'
         fill_in 'Email', with: 'rogerio@email.com'
@@ -30,11 +34,16 @@ feature 'employee seaches an ad' do
     end
     scenario 'and finds nothing' do
         user  = User.create!(full_name: 'Rogério Terciotte', social_name: 'Rogério', birth_date: '01/01/1983', occupation: 'Vendedor', 
-                            department: 'Vendas', company_name: 'Campus Code', email: 'rogerio@email.com', password: '12345678')
+                             department: 'Vendas', company_name: 'Campus Code', email: 'rogerio@email.com', password: '12345678')
+
+        another_user  = User.create!(full_name: 'Fulano Sicrano', social_name: 'Fulano', birth_date: '01/01/1983', occupation: 'Vendedor', 
+                                     department: 'Vendas', company_name: 'Campus Code', email: 'fulano@email.com', password: '12345678')
+
         ad = Ad.create!(name: 'Guitarra', category: 'Instrumento Musical', description: 'Guitarra Les Paul bem conservada', 
-                        photo: 'Guitarra.jpg', price: '1000', quantity: '1', status: 0, user: user)
+                        photo: 'Guitarra.jpg', price: '1000', quantity: '1', status: 0, user: another_user)
+
         another_ad = Ad.create!(name: 'Playstation 4', category: 'Consoles', description: 'Playstation 4 em ótimo estado', 
-                                photo: 'ps4.jpg', price: '1000', quantity: '1', status: 0, user: user)
+                                photo: 'ps4.jpg', price: '1000', quantity: '1', status: 0, user: another_user)
         visit root_path
         click_on 'Login'
         fill_in 'Email', with: 'rogerio@email.com'
@@ -49,13 +58,15 @@ feature 'employee seaches an ad' do
     end
 
     scenario 'finds by partial name' do
-        user  = User.create!(full_name: 'Rogério Terciotte', social_name: 'Rogério', 
-                            birth_date: '01/01/1983', occupation: 'Vendedor', department: 'Vendas', company_name: 'Campus Code',
-                            email: 'rogerio@email.com', password: '12345678')
+        user  = User.create!(full_name: 'Rogério Terciotte', social_name: 'Rogério', birth_date: '01/01/1983', occupation: 'Vendedor', 
+                             department: 'Vendas', company_name: 'Campus Code', email: 'rogerio@email.com', password: '12345678')
+                                   
+        another_user  = User.create!(full_name: 'Fulano Sicrano', social_name: 'Fulano', birth_date: '01/01/1983', occupation: 'Vendedor', 
+                                    department: 'Vendas', company_name: 'Campus Code', email: 'fulano@email.com', password: '12345678')                                   
         ad = Ad.create!(name: 'Guitarra', category: 'Instrumento Musical', description: 'Guitarra Les Paul bem conservada', 
-                        photo: 'Guitarra.jpg', price: '1000', quantity: '1', status: 0, user: user)
+                        photo: 'Guitarra.jpg', price: '1000', quantity: '1', status: 0, user: another_user)
         another_ad = Ad.create!(name: 'Playstation 4', category: 'Consoles', description: 'Playstation 4 em ótimo estado', 
-                        photo: 'ps4.jpg', price: '1000', quantity: '1', status: 0, user: user)
+                                photo: 'ps4.jpg', price: '1000', quantity: '1', status: 0, user: another_user)
         visit root_path
         click_on 'Login'
         fill_in 'Email', with: 'rogerio@email.com'
@@ -73,10 +84,13 @@ feature 'employee seaches an ad' do
 
         user  = User.create!(full_name: 'Rogério Terciotte', social_name: 'Rogério', birth_date: '01/01/1983', occupation: 'Vendedor', 
                             department: 'Vendas', company_name: 'Campus Code', email: 'rogerio@email.com', password: '12345678')
+
         another_user  = User.create!(full_name: 'Fulano Sicrano', social_name: 'Fulano', birth_date: '01/01/1983', occupation: 'Vendedor', 
                                     department: 'Vendas', company_name: 'Fulano Inc.', email: 'fulano@email.com', password: '12345678')
+
         ad = Ad.create!(name: 'Guitarra Gibson', category: 'Instrumento Musical', description: 'Guitarra Gibson bem conservada', 
                         photo: 'Guitarra.jpg', price: '1000', quantity: '1', status: 0, user: user)
+
         another_ad = Ad.create!(name: 'Guitarra Les Paul', category: 'Instrumento Musical', description: 'Guitarra Les Paul bem conservada', 
                         photo: 'Guitarra2.jpg', price: '1000', quantity: '1', status: 0, user: another_user)
         visit root_path
